@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>GIS Lab 14</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Introduction</a></li>
+							<li class="active"><a href="workflow.html">Workflow</a></li>
+							<li><a href="resoults.html">Resoults</a></li>
+							<li><a href="webmap.html">Web Map</a></li>
+						</ul>	
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="sport">
+								<header class="major">
+									<span class="date" style="text-transform: uppercase; font-weight: bold;">before start</span>
+									<p style="text-align: left;">To ensure the smooth operation of the Lab, we must pay special attention to CRS,extent and resolution. These efforts will create a standardized and reliable dataset for our processing.
+										 </p>
+									
+										</header>
+								<header class="major">
+									<span class="date" style="text-transform: uppercase; font-weight: bold;">STEP <span style="font-size: 22px;">1</span></span>	
+									<header>
+										<h2>Data Preprocessing</h2>
+										<p>Extract slope, aspect, profile curvature, and plan curvature from DTM</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="images/DTM14.png" alt="" /></span></div>
+												<div class="col-8"><span class="image fit"><img src="images/fromdtm.png" alt="" /></span></div>
+											</div>
+										</div>
+										<p style="text-align: left;">Define No Landslise Zone(NLZ) from slop and Landslide Inventory(LS) ,assign Harzard value 1 to NLZ and 2 to LZ.And for sure, we need to perform Uninon operation on LZ due to overlapping polygon.</p>
+										<div class="box alt" style="text-align: center;">
+											<div class="row gtr-50 gtr-uniform" style="display: flex; justify-content: center;">
+												<div class="col-6"><span class="image fit"><img src="images/slop14.png" alt="" /></span></div>
+										        <div class="col-6"><span class="image fit"><img src="images/NLZ-diff.png" alt="" /></span></div>
+											</div>
+										</div>
+										<p>Create radom training and testing points.In this case,we have points:  </p>
+										<div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Train_Test</th>
+														<th>Harzard</th>
+														<th>Number of points</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Trainning</td>
+														<td>1</td>
+														<td>350</td>
+													</tr>
+													<tr>
+														<td>Trainning</td>
+														<td>2</td>
+														<td>350</td>
+													</tr>
+													<tr>
+														<td>Testing</td>
+														<td> 1</td>
+														<td>150</td>
+													</tr>
+													<tr>
+														<td>Testing</td>
+														<td>2</td>
+														<td>150</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<p>Then we get:</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-6"><span class="image fit"><img src="images/testpoints.png" alt="" /></span></div>
+												<div class="col-6"><span class="image fit"><img src="images/Trainingpoints.png" alt="" /></span></div>
+											</div>
+										</div>
+										<p>Sample the environmental factors with training and testing points</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<span class="image fit"><img src="images/Screenshot 2024-07-02 084009.png" alt="" /></span>
+											</div>
+										</div>
+										
+									</header>
+								</header>
+								
+											
+								<header class="major">
+									<span class="date" style="text-transform: uppercase; font-weight: bold;">STEP <span style="font-size: 22px;">2</span></span>	
+									<header>
+										<h2>Susceptibility map generation</h2>
+										<p>Create Classification map and Confidence map using the Random Forest classifier by incorporating various environmental factors and training points. </p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-6"><span class="image fit"><img src="images/classification.png" /></span></div>
+												<div class="col-6"><span class="image fit"><img src="images/confidence.png" /></span></div>
+											</div>
+										</div>
+										<p>Then we can convert class probabilit(Landslide Susceptibility Map) from Classification and Confidence.</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<span class="image fit"><img src="images/Landslide Susceptibility Map.png" /></span>
+											</div>
+										</div>
+
+									<h2>validation</h2>
+									<p>To ensure accuracy, we need to validate our processing results. Use testing points to verify the accuracy of our training sample</p>
+									<div class="box alt">
+										<div class="row gtr-50 gtr-uniform">
+											<span class="image fit"><img src="images/Screenshot 2024-07-02 143019.png" height="auto" /></span>
+										</div>
+									<p style="text-align: left;">In the validation results, we can see the model is reliable. We can depend on the established model for landslide susceptibility mapping and Exposure Assessment in this region.</p>
+									</div>
+									</header>
+								</header>
+
+								<header class="major">
+									<span class="date" style="text-transform: uppercase; font-weight: bold;">STEP <span style="font-size: 22px;">3</span></span>	
+									<header>
+										<h2>Data Preprocessing</h2>
+										<p>Reclassify the susceptibility raster and then resample the resoult</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-6"><span class="image fit"><img src="images/Landslide Susceptibility Map_reclass.png" alt="" /></span></div>
+												<div class="col-6"><span class="image fit"><img src="images/Landslide Susceptibility Map_reclass_resample.png" alt="" /></span></div>
+											</div>
+										</div>
+
+									</header>
+								</header>
+
+								<header class="major">
+									<span class="date" style="text-transform: uppercase; font-weight: bold;">STEP <span style="font-size: 22x;">4</span></span>	
+									<header>
+										<h2>Exposure assessment</h2>
+										<p> Compute the population counts in each susceptibility class</p>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<span class="image fit"><img src="images/Screenshot 2024-07-02 102119.png" /></span>
+											</div>
+										</div>
+
+									</header>
+								</header>
+
+
+							<!--navigate to next page-->
+							<ul class="actions special">
+								<li><a href="resoults.html" class="button large">Next Page</a></li>
+							</ul>
+			
+
+									
+									
+							</section>
+
+
+					</div>
+	
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
