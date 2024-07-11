@@ -11,7 +11,7 @@ Clone the repository using the command
 git clone https://github.com/Diuke/polimi-webgis-class-2024
 ```
 
-Or fork the repository for having your own copy.
+Or fork the repository for having your own copy or download via https://pan.baidu.com/s/1BK8PFmAw73GyklnTM9Of6Q with code:7gg8
 
 This application uses npm as the package manager and Vite as the web server.
 It uses Node version 16 or higher.
